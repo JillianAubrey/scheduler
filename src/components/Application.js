@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 import DayList from "./DayList";
+import Appointment from "./Appointment";
+
+import { appointmentData } from "appointmentData";
 
 import "components/Application.scss";
 
@@ -25,6 +28,15 @@ export default function Application(props) {
     },
   ];
 
+  const appointments = Object.values(appointmentData).map(appt => {
+    return (
+      <Appointment
+        key={appt.id}
+        {...appt}
+      />
+    )
+  })
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -48,7 +60,8 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointments}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
