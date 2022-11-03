@@ -1,7 +1,7 @@
-export function getAppointmentsForDay(state, day) {
-  for (const item of state.days) {
-    if (item.name === day) {
-      return [...item.appointments].map(id => state.appointments[id]);
+export function getAppointmentsForDay(state) {
+  for (const day of state.days) {
+    if (day.name === state.day) {
+      return [...day.appointments].map(id => state.appointments[id]);
     }
   }
   return [];
