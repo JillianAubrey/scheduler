@@ -1,9 +1,7 @@
 export function getAppointmentsForDay(state, day) {
-  const compareDay = (day || state.day);
-
-  for (const day of state.days) {
-    if (day.name === compareDay) {
-      return [...day.appointments].map(id => state.appointments[id]);
+  for (const item of state.days) {
+    if (item.name === day) {
+      return [...item.appointments].map(id => state.appointments[id]);
     }
   }
   return [];
@@ -27,4 +25,13 @@ export function getInterview(state, interview) {
   }
 
   return {...interview, interviewer: {...interviewer}};
+}
+
+export function getInterviewersForDay(state, day) {
+  for (const item of state.days) {
+    if (item.name === day) {
+      return [...item.interviewers].map(id => state.interviewers[id]);
+    }
+  }
+  return [];
 }
