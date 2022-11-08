@@ -37,30 +37,19 @@ export default function Application(props) {
     };
 
     return axios.put(`/api/appointments/${id}`, appointment)
-    .then(response => {
-      console.log(response)
-      if (response.status !== 204) {
-        return
-      }
-
+    .then(() => {
       const appointments = {
         ...state.appointments,
         [id]: appointment
       };
   
       setState(prev => ({...prev, appointments}));
-
-      return true;
     })
   }
 
   function deleteInterview(id) {
     return axios.delete(`/api/appointments/${id}`)
-    .then(response => {
-      if (response.status !== 204) {
-        return
-      }
-
+    .then(() => {
       const appointments = {
         ...state.appointments,
         [id]: {
@@ -70,8 +59,6 @@ export default function Application(props) {
       };
 
       setState(prev => ({...prev, appointments}));
-
-      return true;
     })
   }
 
