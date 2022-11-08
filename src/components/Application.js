@@ -54,15 +54,40 @@ export default function Application(props) {
     })
   }
 
+  function deleteInterview(id) {
+    return axios.delete(`/api/appointments/${id}`)
+    .then(response => {
+      if (response.status !== 204) {
+        return
+      }
+
+      const appointment = {
+        ...state.appointments[id],
+        interview: null
+      };
+
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment
+      };
+
+      setState(prev => ({...prev, appointments}));
+
+      return true;
+    })
+  }
+
   const appointments = getAppointmentsForDay(state, state.day).map(appt => {
     const interview = getInterview(state, appt.interview);
+    const { id } = appt;
     return (
       <Appointment
-        key={appt.id}
+        key={id}
         {...appt}
         interview={interview}
         interviewers={interviewers}
-        bookInterview={(interview) => bookInterview(appt.id, interview)}
+        bookInterview={interview => bookInterview(id, interview)}
+        deleteInterview={() => deleteInterview(id)}
       />
     )
   })
