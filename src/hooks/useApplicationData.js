@@ -26,15 +26,14 @@ export default function useApplicationData() {
   };
 
   function updateSpots(appointments) {
-    const updatedDays = [...state.days];
+    const updatedDays = [];
 
-    updatedDays.forEach(day => {
-      day.spots = day.appointments.reduce((spots, id) => {
-        if (!appointments[id].interview) {
-          spots++;
-        }
+    state.days.forEach((day) => {
+      const spots = day.appointments.reduce((spots, id) => {
+        if (!appointments[id].interview) spots++;
         return spots;
       }, 0)
+      updatedDays.push({...day, spots});
     })
 
     return updatedDays
