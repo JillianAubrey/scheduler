@@ -61,14 +61,12 @@ export default function Application(props) {
         return
       }
 
-      const appointment = {
-        ...state.appointments[id],
-        interview: null
-      };
-
       const appointments = {
         ...state.appointments,
-        [id]: appointment
+        [id]: {
+          ...state.appointments[id],
+          interview: null
+        }
       };
 
       setState(prev => ({...prev, appointments}));
