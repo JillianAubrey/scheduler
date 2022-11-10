@@ -1,23 +1,22 @@
 # Interview Scheduler
+Interview scheduler is a single page app created with React. It allows users to create, edit and delete interview slots.
+
+This project was completed as a part of my learning at [Lighthouse Labs](https://www.lighthouselabs.ca/). The purpose of this project was to learn how to work with React.
+
+## Final product
 
 ## Setup
 
-Install dependencies with `npm install`.
+1. Clone this repo with `git clone git@github.com:JillianAubrey/scheduler.git`.
 
-## Running Webpack Development Server
+2. Install dependencies with `npm install`.
 
-```sh
-npm start
-```
+### API Server Setup
+Create the database/api server by cloning and following the instructions for [scheduler-api](https://github.com/lighthouse-labs/scheduler-api).
 
-## Running Jest Test Framework
+## Running Development Server
+1. Start the api server by running `npm start` in the scheduler-api directory.
 
-```sh
-npm test
-```
+2. Start the webpack server by running `npm-start` in the scheduler directory.
 
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+3. Visit [http://localhost:8000/](http://localhost:8000/) if not automatically redirected.
