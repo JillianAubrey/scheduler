@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+  * React component for body of Appointment item in SAVING or DELETING mode
+  * @property {String} message Status message to display
+  * @return {Component} React component
+*/
 export default function Status(props) {
   return (
     <main className="appointment__card appointment__card--status">

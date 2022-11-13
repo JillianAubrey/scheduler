@@ -1,6 +1,12 @@
 import React from "react";
 import Button from "components/Button";
 
+/**
+  * React component for body of Appointment item in CONFIRM mode
+  * @property {Function} onCancel Function to call when cancel button is clicked
+  * @property {Function} onConfirm Function to call when confirm button is clicked
+  * @return {Component} React component
+*/
 export default function Confirm(props) {
   return (
     <main className="appointment__card appointment__card--confirm">

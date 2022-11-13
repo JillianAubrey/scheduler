@@ -1,3 +1,5 @@
+//Mock functions to use for jest testing involving axios requests
+
 const fixtures = {
   days: [
     {

@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+  * React component for body of Appointment item in ERROR mode
+  * @property {String} message Error message to display
+  * @property {Function} onClose Function to call when user closes error message
+  * @return {Component} React component
+*/
 export default function Error(props) {
   return (
     <main className="appointment__card appointment__card--error">

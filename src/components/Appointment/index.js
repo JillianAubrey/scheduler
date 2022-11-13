@@ -11,7 +11,17 @@ import useVisualMode from "hooks/useVisualMode";
 
 import "./styles.scss";
 
+/**
+  * React component for Appointment item
+  * @property {Object} interview Interview object. null if no interview is associated with appointment 
+  * @property {String} time Time of appointment
+  * @property {Array} interviewers List of available interviewers
+  * @property {Function} bookInterview Function to POST interview to API server
+  * @property {Function} deleteInterview Function to DELETE interview from API server
+  * @return {Component} React component
+*/
 export default function Appointment(props) {
+  //Various visual modes
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -27,6 +37,13 @@ export default function Appointment(props) {
       interview ? SHOW : EMPTY
     );
 
+  /**
+    * Action to take when saving an interview to an appointment appointment.
+    * Calls bookInterview and transitions visual mode as required.
+    * @param {String} student Name of student for interview
+    * @param {Object} interview Interview object
+    * @return {none}
+  */
   function save(student, interviewer) {
     transition(SAVING);
     const interview = {
@@ -39,6 +56,12 @@ export default function Appointment(props) {
     .catch(() => transition(ERROR_SAVE, true));
   }
 
+  /**
+    * Action to take when deletion of interview is confirmed.
+    * Calls deelteInterview and transitions visual mode as required.
+    * @param {none}
+    * @return {none}
+  */
   function confirmDelete() {
     transition(DELETING, true)
 
@@ -50,6 +73,7 @@ export default function Appointment(props) {
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={time} />
+      {/* Appointment content is conditionally rendered based on mode*/}
       {mode === EMPTY && (
         <Empty 
           onAdd={() => transition(CREATE)} 

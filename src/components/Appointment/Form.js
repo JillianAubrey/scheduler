@@ -2,21 +2,46 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
+/**
+  * React component for body of Appointment item in CREATE or EDIT mode
+  * @property {String} student Initial name of student, null for CREATE mode
+  * @property {Number} interviewer Initial id of interviewer, null for CREATE mode
+  * @property {Function} onSave Function to call when user saves changes
+  * @property {Function} onCancel Function to call when user cancels creation/edit
+  * @return {Component} React component
+*/
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || '');
   const [interviewerId, setInterviewerId] = useState(props.interviewer || null)
   const [error, setError] = useState('');
 
+  /**
+    * Resets input values to empty state
+    * @param {none}
+    * @return {none}
+  */
   const reset = () => {
     setStudent('');
     setInterviewerId(null);
   }
 
+  /**
+    * Action to take when user presses cancel button.
+    * Resets form and calls onCancel
+    * @param {none}
+    * @return {none}
+  */
   const cancel = () => {
     reset();
     props.onCancel();
   }
 
+  /**
+    * Action to take when user presses save button.
+    * Validates inputs and calls onSave is validation passes. If validation doesn't pass, updates error state to display error message.
+    * @param {none}
+    * @return {none}
+  */
   const validate = () => {
     if (!student) {
       setError("Student name cannot be blank");

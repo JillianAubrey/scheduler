@@ -1,5 +1,13 @@
 import React from "react";
 
+/**
+  * React component for body of Appointment item in SHOW mode
+  * @property {String} student Name of student
+  * @property {Object} interviewer Interviewer object
+  * @property {Function} onEdit Function to call when user clicks edit button
+  * @property {Function} onDelete Function to call when user clicks delete button
+  * @return {Component} React component
+*/
 export default function Show(props) {
   return (
     <main className="appointment__card appointment__card--show">
