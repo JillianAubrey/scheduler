@@ -21,3 +21,11 @@ Create the database/api server by cloning and following the instructions for [sc
 2. Start the webpack server by running `npm-start` in the scheduler directory.
 
 3. Visit [http://localhost:8000/](http://localhost:8000/) if not automatically redirected.
+
+## Dependencies
+- axios
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts
